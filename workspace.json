@@ -1,6 +1,27 @@
 {
   "version": 2,
   "projects": {
+    "scraper": {
+      "root": "libs/scraper",
+      "sourceRoot": "libs/scraper/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/scraper/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/scraper"],
+          "options": {
+            "jestConfig": "libs/scraper/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "web": {
       "root": "apps/web",
       "sourceRoot": "apps/web/src",
