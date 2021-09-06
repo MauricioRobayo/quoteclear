@@ -9,14 +9,9 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 
 export function formatDate(date: Date): string {
   const parts = dateFormatter.formatToParts(date);
-  console.log(date);
   const day = parts.find((part) => part.type === "day")?.value;
   const month = parts.find((part) => part.type === "month")?.value;
   const year = parts.find((part) => part.type === "year")?.value;
-
-  if (day === undefined || month === undefined || year === undefined) {
-    throw new Error(`Could not format date '${date}'!`);
-  }
 
   return `${month}-${day}-${year}`.toLowerCase();
 }
