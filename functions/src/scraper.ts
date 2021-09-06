@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import { QuoteStorage } from "./types";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
@@ -27,12 +28,11 @@ export function getPreviousThursday(date: Date): Date {
   return dt;
 }
 
-type Quote = {
-  text: string;
-  cttId: string;
-};
+function validQuote(quote: QuoteStorage | null): quote is QuoteStorage {
+  return quote !== null;
+}
 
-export async function scraper(date = new Date()): Promise<Quote[]> {
+export async function getQuotes(date = new Date()): Promise<QuoteStorage[]> {
   const previousThursday = getPreviousThursday(date);
   const formattedDate = formatDate(previousThursday);
   const url = `https://jamesclear.com/3-2-1/${formattedDate}`;
@@ -48,17 +48,19 @@ export async function scraper(date = new Date()): Promise<Quote[]> {
     }
   });
 
-  return Promise.all([...cttIds].map(getCttContent));
+  return (await Promise.all([...cttIds].map(getQuote))).filter(validQuote);
 }
 
-async function getCttContent(cttId: string): Promise<Quote> {
+async function getQuote(cttId: string): Promise<QuoteStorage | null> {
   const url = `https://clicktotweet.com/${cttId}`;
+
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
   const title = $("title").text();
-  const match = title.match(/"(.*)"/s);
+  const match = title.replace(/["“”]/g, "").replace(/-@JamesClear/g, "");
   if (!match) {
-    throw new Error(`Could not find quote in '${url}'!'`);
+    console.log(`Could not find quote in url '${url}' with title '${title}'`);
+    return null;
   }
 
   return { text: match[1], cttId };

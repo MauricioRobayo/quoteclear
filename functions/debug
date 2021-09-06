@@ -1,0 +1,361 @@
+Need to install the following packages:
+  ts-node
+Ok to proceed? (y) Error: getaddrinfo EAI_AGAIN clicktotweet.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:69:26) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'clicktotweet.com',
+  config: {
+    url: 'https://clicktotweet.com/98CF4',
+    method: 'get',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'User-Agent': 'axios/0.21.4'
+    },
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 0,
+    adapter: [Function: httpAdapter],
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    validateStatus: [Function: validateStatus],
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    data: undefined
+  },
+  request: <ref *1> Writable {
+    _writableState: WritableState {
+      objectMode: false,
+      highWaterMark: 16384,
+      finalCalled: false,
+      needDrain: false,
+      ending: false,
+      ended: false,
+      finished: false,
+      destroyed: false,
+      decodeStrings: true,
+      defaultEncoding: 'utf8',
+      length: 0,
+      writing: false,
+      corked: 0,
+      sync: true,
+      bufferProcessing: false,
+      onwrite: [Function: bound onwrite],
+      writecb: null,
+      writelen: 0,
+      afterWriteTickInfo: null,
+      buffered: [],
+      bufferedIndex: 0,
+      allBuffers: true,
+      allNoop: true,
+      pendingcb: 0,
+      prefinished: false,
+      errorEmitted: false,
+      emitClose: true,
+      autoDestroy: true,
+      errored: null,
+      closed: false
+    },
+    _events: [Object: null prototype] {
+      response: [Function: handleResponse],
+      error: [Function: handleRequestError]
+    },
+    _eventsCount: 2,
+    _maxListeners: undefined,
+    _options: {
+      maxRedirects: 21,
+      maxBodyLength: 10485760,
+      protocol: 'https:',
+      path: '/98CF4',
+      method: 'GET',
+      headers: [Object],
+      agent: undefined,
+      agents: [Object],
+      auth: undefined,
+      hostname: 'clicktotweet.com',
+      port: null,
+      nativeProtocols: [Object],
+      pathname: '/98CF4'
+    },
+    _ended: true,
+    _ending: true,
+    _redirectCount: 0,
+    _redirects: [],
+    _requestBodyLength: 0,
+    _requestBodyBuffers: [],
+    _onNativeResponse: [Function (anonymous)],
+    _currentRequest: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      socket: [TLSSocket],
+      _header: 'GET /98CF4 HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/0.21.4\r\n' +
+        'Host: clicktotweet.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: noopPendingOutput],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      path: '/98CF4',
+      _ended: false,
+      res: null,
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'clicktotweet.com',
+      protocol: 'https:',
+      _redirectable: [Circular *1],
+      [Symbol(kCapture)]: false,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype]
+    },
+    _currentUrl: 'https://clicktotweet.com/98CF4',
+    [Symbol(kCapture)]: false
+  },
+  response: undefined,
+  isAxiosError: true,
+  toJSON: [Function: toJSON]
+}
+Document written with ID:  cI87A
+Document written with ID:  bs4ZW
+Document written with ID:  c06GB
+Document written with ID:  4n7R3
+Document written with ID:  Gn0e1
+Document written with ID:  dZo5f
+Document written with ID:  UPnGZ
+Document written with ID:  H3L0x
+Document written with ID:  Kl94d
+Document written with ID:  040zb
+Document written with ID:  D30Ax
+Document written with ID:  23Has
+Document written with ID:  e5P1T
+Document written with ID:  kfE6n
+Document written with ID:  rdJCN
+Document written with ID:  Wkb1m
+Document written with ID:  82f94
+Document written with ID:  V4fTX
+Document written with ID:  X5p87
+Document written with ID:  mQjPn
+Document written with ID:  FI_TG
+Document written with ID:  7Poz9
+Document written with ID:  XaWl6
+Document written with ID:  oPfZd
+Document written with ID:  d53ce
+Document written with ID:  h90c_
+Document written with ID:  676y1
+Document written with ID:  3Nybf
+Document written with ID:  887aT
+Document written with ID:  0znc2
+Document written with ID:  hfRel
+Document written with ID:  v13dK
+Document written with ID:  kO0a5
+Document written with ID:  INT3x
+Document written with ID:  3m8xe
+Document written with ID:  x9pR1
+Document written with ID:  _d8G7
+Document written with ID:  gcH7B
+Document written with ID:  c1qy2
+Document written with ID:  6zfTZ
+Document written with ID:  1A9DI
+Document written with ID:  fcf0s
+Document written with ID:  twscb
+Document written with ID:  A3O6a
+Document written with ID:  uLR13
+Document written with ID:  d4cav
+Document written with ID:  fwAF8
+Document written with ID:  _7alY
+Document written with ID:  J58Dj
+Document written with ID:  JIc6x
+Document written with ID:  d8cq4
+Document written with ID:  WzEJ1
+Document written with ID:  eK5b_
+Document written with ID:  7i787
+Document written with ID:  gwf22
+Document written with ID:  386Vs
+Document written with ID:  l9VS6
+Document written with ID:  3XL75
+Document written with ID:  iRVf3
+Document written with ID:  385p7
+Document written with ID:  3k607
+Document written with ID:  4K7Wt
+Document written with ID:  PjcTX
+Document written with ID:  bbgOo
+Document written with ID:  5Wy2p
+Document written with ID:  Ira4g
+Document written with ID:  6kxON
+Document written with ID:  9z8fD
+Document written with ID:  p69h1
+Document written with ID:  2s86c
+Document written with ID:  0oHS3
+Document written with ID:  0bV93
+Document written with ID:  521TH
+Document written with ID:  dbKfB
+Document written with ID:  gfpzu
+Document written with ID:  4Qcie
+Document written with ID:  MUaJY
+Document written with ID:  k0mg4
+Document written with ID:  6x0qR
+Document written with ID:  rHav4
+Document written with ID:  UdG6y
+Document written with ID:  0UfrS
+Document written with ID:  e5_Dl
+Document written with ID:  P9Ypx
+Document written with ID:  bmab7
+Document written with ID:  zG063
+Document written with ID:  e5e83
+Document written with ID:  lmMIj
+Document written with ID:  cS5zw
+Document written with ID:  a2qe1
+Document written with ID:  F33LG
+Document written with ID:  DL75V
+Document written with ID:  8So80
+Document written with ID:  jwRuU
+Document written with ID:  Jsc3L
+Document written with ID:  8O1xG
+Document written with ID:  S8mP5
+Document written with ID:  OF8Dc
+Document written with ID:  iAMzu
+Document written with ID:  Uc0fd
+Document written with ID:  nAaLD
+Document written with ID:  7ma70
+Document written with ID:  npc3l
+Document written with ID:  nr0iy
+Document written with ID:  fdk6S
+Document written with ID:  05kam
+Document written with ID:  Ag4mK
+Document written with ID:  lgo8F
+Document written with ID:  xD3Jf
+Document written with ID:  UD1wR
+Document written with ID:  cfqbZ
+Document written with ID:  M3cm6
+Document written with ID:  dx264
+Document written with ID:  8ddRX
+Document written with ID:  GxVrX
+Document written with ID:  dg_a4
+Document written with ID:  BGrLb
+Document written with ID:  Yv1b1
+Document written with ID:  uby05
+Document written with ID:  nFgxJ
+Document written with ID:  5Rw9X
+Document written with ID:  W60D9
+Document written with ID:  flamA
+Document written with ID:  x47oO
+Document written with ID:  8szfA
+Document written with ID:  147ee
+Document written with ID:  44jYw
+Document written with ID:  Xg085
+Document written with ID:  6WaG2
+Document written with ID:  _iuqa
+Document written with ID:  ca8aC
+Document written with ID:  jRNI1
+Document written with ID:  ezqd1
+Document written with ID:  gq7ff
+Document written with ID:  choLc
+Document written with ID:  rcF_x
+Document written with ID:  0A6UV
+Document written with ID:  SHz3f
+Document written with ID:  Gd7qm
+Document written with ID:  hdcf6
+Document written with ID:  0SVbC
+Document written with ID:  3wPec
+Document written with ID:  V6ctJ
+Document written with ID:  AM1SB
+Document written with ID:  3c2B6
+Document written with ID:  c636O
+Document written with ID:  7E0e1
+Document written with ID:  009sx
+Document written with ID:  3eljS
+Document written with ID:  8UdMp
+Document written with ID:  zaLsM
+Document written with ID:  Yg9pV
+Document written with ID:  fbEs_
+Document written with ID:  pUgrX
+Document written with ID:  ufob9
+Document written with ID:  r29ga
+Document written with ID:  An1qj
+Document written with ID:  rdIGf
+Document written with ID:  WR20f
+Document written with ID:  2s73d
+Document written with ID:  5v4wt
+Document written with ID:  55Pq7
+Document written with ID:  Jr9Ue
+Document written with ID:  zt52M
+Document written with ID:  p9foz
+Document written with ID:  e1iy5
+Document written with ID:  RGqU5
+Document written with ID:  Y77b2
+Document written with ID:  3ufkH
+Document written with ID:  514u6
+Document written with ID:  1PKcD
+Document written with ID:  Te8Or
+Document written with ID:  c2cW4
+Document written with ID:  H4cc_
+Document written with ID:  e5OId
+Document written with ID:  f0BaP
+Document written with ID:  WEeb9
+Document written with ID:  pN31e
+Document written with ID:  32b8T
+Document written with ID:  ymG4r
+Document written with ID:  1a9fb
+Document written with ID:  lMt1c
+Document written with ID:  lbTfi
+Document written with ID:  UD502
+Document written with ID:  7pL6b
+Document written with ID:  cwqIP
+Document written with ID:  KsHVc
+Document written with ID:  ntocv
+Document written with ID:  olKw2
+Document written with ID:  6jOJn
+Document written with ID:  l533x
+Document written with ID:  U5V87
+Document written with ID:  bzvxV
+Document written with ID:  54bNl
+Document written with ID:  umI7p
+Document written with ID:  8Wd3t
+Document written with ID:  CeRDc
+Document written with ID:  da_X1
+Document written with ID:  2zy3F
+Document written with ID:  izbI8
+Document written with ID:  s62C2
+Document written with ID:  cJ68C
+Document written with ID:  D1pcB
+Document written with ID:  69Y3a
+Document written with ID:  cvjab
+Document written with ID:  vL6tq
+Document written with ID:  dMZL5
+Document written with ID:  H4e6o
+Document written with ID:  83914
