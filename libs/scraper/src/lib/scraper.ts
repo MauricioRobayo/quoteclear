@@ -28,35 +28,36 @@ export function getPreviousThursday(date: Date): Date {
   return dt;
 }
 
-export async function scraper(date = new Date(), logger = console) {
+type Quote = {
+  text: string;
+  cttId: string;
+};
+
+export async function scraper(date = new Date()): Promise<Quote[]> {
   const previousThursday = getPreviousThursday(date);
   const formattedDate = formatDate(previousThursday);
   const url = `https://jamesclear.com/3-2-1/${formattedDate}`;
+  const { data } = await axios.get(url);
+  const $ = cheerio.load(data);
+  const links = $('a[href^="https://ctt.ac/"]');
+  const cttIds = new Set<string>();
 
-  try {
-    const { data } = await axios.get(url);
-    console.log(data);
-    const $ = cheerio.load(data);
-    const links = $('a[href^="https://ctt.ac/"]');
-    const cttIds = new Set();
-    $(links).each(function (i, link) {
-      cttIds.add($(link).attr('href').replace(/.*\//, ''));
-    });
-  } catch (err) {
-    logger.log(err);
-  }
+  $(links).each(function (_, link) {
+    cttIds.add($(link).attr('href').replace(/.*\//, ''));
+  });
+
+  return Promise.all(Array.from(cttIds).map(getCttContent));
 }
 
-async function getCttContent(cttId) {
+async function getCttContent(cttId): Promise<Quote> {
   const url = `https://clicktotweet.com/${cttId}`;
-  try {
-    const { data } = await axios.get(url);
-    const $ = cheerio.load(data);
-    const title = $('title').text();
-    console.log(title, title.replace(/(".*")/, ''));
-  } catch (err) {
-    console.log(err);
+  const { data } = await axios.get(url);
+  const $ = cheerio.load(data);
+  const title = $('title').text();
+  const match = title.match(/"(.*)"/s);
+  if (!match) {
+    throw new Error(`Could not find quote in '${url}'!'`);
   }
-}
 
-getCttContent('7ma70');
+  return { text: match[1], cttId };
+}
