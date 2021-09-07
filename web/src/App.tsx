@@ -42,11 +42,8 @@ const Flip = styled.span`
 
 const Main = styled.main`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   max-width: ${({ theme }) => theme.maxWidth};
-  width: 100%;
+  width: 97.5%;
 `;
 
 const Footer = styled.footer`

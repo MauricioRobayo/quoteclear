@@ -12,13 +12,13 @@ const sharedStyles = {
     text1: "'Crimson Pro', serif",
     text2: "'Nunito Sans', sans-serif",
   },
-  maxWidth: "768px",
+  maxWidth: "425px",
+  borderRadius: "0.5rem",
 };
 
 export const theme: { light: DefaultTheme; dark: DefaultTheme } = {
   light: {
     ...sharedStyles,
-    borderRadius: "5px",
     colors: {
       brand: brandColor.lightness(30).hex(),
       text1: brandColor.lightness(10).hex(),
@@ -32,7 +32,6 @@ export const theme: { light: DefaultTheme; dark: DefaultTheme } = {
   },
   dark: {
     ...sharedStyles,
-    borderRadius: "5px",
     colors: {
       brand: brandColor.saturationl(82).lightness(70).hex(),
       text1: brandColor.saturationl(15).lightness(75).hex(),
