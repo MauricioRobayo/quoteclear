@@ -77,8 +77,8 @@ function App() {
           </Title>
           <div>
             <p>
-              From{" "}
-              <a href="https://jamesclear.com/3-2-1">The 3-2-1 Newsletter</a>.
+              from{" "}
+              <a href="https://jamesclear.com/3-2-1">The 3-2-1 Newsletter</a>
             </p>
           </div>
         </Header>

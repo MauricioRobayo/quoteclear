@@ -10,6 +10,9 @@ export const linkStyle = css`
   text-decoration: none;
   border-bottom: 2px solid ${({ theme }) => theme.colors.surface4};
   cursor: pointer;
+  &:hover {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.brand};
+  }
 `;
 
 export const smallText = css`
