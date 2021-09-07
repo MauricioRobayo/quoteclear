@@ -7,21 +7,30 @@ const brandColor = Color({
   l: 77,
 });
 
+const sharedStyles = {
+  fontFamily: {
+    text1: "'Crimson Pro', serif",
+    text2: "'Nunito', sans-serif",
+  },
+};
+
 export const theme: { light: DefaultTheme; dark: DefaultTheme } = {
   light: {
+    ...sharedStyles,
     borderRadius: "5px",
     colors: {
-      brand: brandColor.hex(),
+      brand: brandColor.lightness(30).hex(),
       text1: brandColor.lightness(10).hex(),
       text2: brandColor.saturationl(30).lightness(30).hex(),
-      surface1: brandColor.saturationl(20).lightness(85).hex(),
-      surface2: brandColor.saturationl(25).lightness(90).hex(),
-      surface3: brandColor.saturationl(20).lightness(92).hex(),
-      surface4: brandColor.saturationl(20).lightness(99).hex(),
+      surface1: brandColor.saturationl(20).lightness(99).hex(),
+      surface2: brandColor.saturationl(20).lightness(92).hex(),
+      surface3: brandColor.saturationl(25).lightness(90).hex(),
+      surface4: brandColor.saturationl(20).lightness(85).hex(),
       surfaceShadow: brandColor.saturationl(10).lightness(40).alpha(0.2).hex(),
     },
   },
   dark: {
+    ...sharedStyles,
     borderRadius: "5px",
     colors: {
       brand: brandColor.saturationl(82).lightness(70).hex(),
