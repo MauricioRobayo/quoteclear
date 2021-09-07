@@ -1,9 +1,10 @@
 import React from "react";
-import styled, { css } from "styled-components/macro";
+import styled from "styled-components/macro";
 import { useQuery } from "react-query";
 import { QuoteLoader } from "./loaders";
 import { linkStyle, smallText } from "../../styles/mixins";
 import { getQuote } from "../../services/api";
+import Skeleton from "react-loading-skeleton";
 
 const RefreshButton = styled.button`
   ${linkStyle}
@@ -35,14 +36,6 @@ const Blockquote = styled.blockquote<{ isLoading: boolean }>`
   padding: 0.5em 1em;
   border-radius: ${({ theme }) => theme.borderRadius};
   margin: 0 0 0.5rem 0;
-  min-height: 2rem;
-  ${({ isLoading }) =>
-    isLoading &&
-    css`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    `}
   p {
     margin: 0.5em 0;
   }
@@ -64,8 +57,8 @@ export function Quote() {
 
   return (
     <StyledQuote>
-      <Blockquote isLoading={isFetching}>
-        {isFetching ? (
+      <Blockquote isLoading={isFetching || Math.random() > 0}>
+        {isFetching || Math.random() > 0 ? (
           <QuoteLoader />
         ) : (
           data.text
