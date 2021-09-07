@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useQuery } from "react-query";
+import { QueryClient, useQuery } from "react-query";
 import { QuoteLoader } from "./loaders";
 import { linkStyle } from "../../styles/mixins";
 
@@ -46,13 +46,24 @@ const Blockquote = styled.blockquote`
 `;
 
 export function Quote() {
-  const { isLoading, error, data } = useQuery("repoData", async () => {
-    const response = await fetch("/api/randomQuote");
-    if (!response.ok) {
-      throw new Error("Request failed!");
+  const { isLoading, error, data, refetch } = useQuery(
+    "repoData",
+    async () => {
+      const response = await fetch("/api/randomQuote");
+      if (!response.ok) {
+        throw new Error("Request failed!");
+      }
+      return response.json();
+    },
+    {
+      refetchOnWindowFocus: false,
+      enabled: false,
     }
-    return response.json();
-  });
+  );
+
+  function newQuote() {
+    refetch();
+  }
 
   if (isLoading) return <QuoteLoader />;
 
@@ -72,7 +83,9 @@ export function Quote() {
             <a href={data.source}>Source</a>
           </div>
           <div>
-            <RefreshButton type="button">Refresh</RefreshButton>
+            <RefreshButton type="button" onClick={newQuote}>
+              Refresh
+            </RefreshButton>
           </div>
         </div>
         <div>
