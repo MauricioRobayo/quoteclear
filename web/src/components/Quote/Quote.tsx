@@ -33,9 +33,10 @@ const Blockquote = styled.blockquote<{ isLoading: boolean }>`
   line-height: 1.25em;
   font-weight: 300;
   color: ${({ theme }) => theme.colors.text1};
-  background-color: ${({ theme }) => theme.colors.surface2};
+  background-color: ${({ theme }) => theme.colors.surface3};
   padding: 0.5em 1em;
   border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.colors.surfaceShadow} 2px 4px 6px 0px;
   margin: 0;
   p {
     margin: 0.5em 0;
