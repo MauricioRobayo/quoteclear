@@ -9,7 +9,8 @@ const RefreshButton = styled.button`
   ${linkStyle}
 `;
 const StyledQuote = styled.figure`
-  margin: 2rem 1rem;
+  margin: 4rem 1rem 0 1rem;
+  width: 100%;
 `;
 const FigCaption = styled.figcaption`
   * {
@@ -31,33 +32,22 @@ const Blockquote = styled.blockquote`
   font-weight: 300;
   color: ${({ theme }) => theme.colors.text1};
   background-color: ${({ theme }) => theme.colors.surface2};
-  padding: 1em;
-  text-align: center;
+  padding: 0.5em 1em;
   border-radius: ${({ theme }) => theme.borderRadius};
   margin: 0 0 0.5rem 0;
-  &::before,
-  &::after {
-    opacity: 0.5;
-    font-size: 1.25em;
-  }
-  &::before {
-    content: "“";
-  }
-  &::after {
-    content: "”";
+  p {
+    margin: 0.5em 0;
   }
 `;
 
 export function Quote() {
-  const { isLoading, error, data, refetch } = useQuery("repoData", getQuote, {
-    staleTime: Infinity,
-  });
-
-  function newQuote() {
-    refetch();
-  }
-
-  if (isLoading) return <QuoteLoader />;
+  const { isLoading, isFetching, error, data, refetch } = useQuery(
+    "repoData",
+    getQuote,
+    {
+      staleTime: Infinity,
+    }
+  );
 
   if (error) {
     if (error instanceof Error) {
@@ -66,24 +56,37 @@ export function Quote() {
     return <div>An error has occured: {JSON.stringify(error, null, 2)}</div>;
   }
 
+  console.log(data?.text);
+
   return (
     <StyledQuote>
-      <Blockquote>{data.text}</Blockquote>
-      <FigCaption>
-        <div>
+      <Blockquote>
+        {isLoading || isFetching ? (
+          <QuoteLoader width="90%" height="1em" />
+        ) : (
+          data.text
+            .split("\n")
+            .filter((line: string) => line.trim() !== "")
+            .map((line: string, index: number) => <p key={index}>{line}</p>)
+        )}
+      </Blockquote>
+      {isLoading || isFetching ? null : (
+        <FigCaption>
           <div>
-            <a href={data.source}>Source</a>
+            <div>
+              <a href={data.source}>Source</a>
+            </div>
+            <div>
+              <RefreshButton type="button" onClick={() => refetch()}>
+                Refresh
+              </RefreshButton>
+            </div>
           </div>
           <div>
-            <RefreshButton type="button" onClick={newQuote}>
-              Refresh
-            </RefreshButton>
+            <a href={`https://ctt.ac/${data.cttId}`}>Tweet</a>
           </div>
-        </div>
-        <div>
-          <a href={`https://ctt.ac/${data.cttId}`}>Tweet</a>
-        </div>
-      </FigCaption>
+        </FigCaption>
+      )}
     </StyledQuote>
   );
 }
