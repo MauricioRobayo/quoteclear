@@ -13,10 +13,13 @@ async function getPreviousQuotes() {
 
     try {
       console.log(`Getting quote for ${cttId}...`);
-      const quote = await getQuote(cttId);
+      const quote = await getQuote(cttId.cttId);
       console.log(`Done! Got ${JSON.stringify(quote, undefined, 2)}`);
 
-      quotes.push(quote);
+      quotes.push({
+        ...cttId,
+        text: quote,
+      });
     } catch (err) {
       console.log(`Failed on ${cttId}`);
     }
