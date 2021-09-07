@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { linkStyle } from "./mixins";
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -7,6 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.surface1};
   }
   a {
-    color: ${({ theme }) => theme.colors.brand};
+    ${linkStyle}
   }
 `;

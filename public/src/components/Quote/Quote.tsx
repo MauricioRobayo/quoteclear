@@ -2,22 +2,36 @@ import React from "react";
 import styled from "styled-components/macro";
 import { useQuery } from "react-query";
 import { QuoteLoader } from "./loaders";
+import { linkStyle } from "../../styles/mixins";
 
+const RefreshButton = styled.button`
+  ${linkStyle}
+`;
 const StyledQuote = styled.figure`
   margin: 0 0.5rem;
 `;
+const FigCaption = styled.figcaption`
+  display: flex;
+  justify-content: space-between;
+  div {
+    display: flex;
+    & > div:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+`;
 const Blockquote = styled.blockquote`
-  font-family: ${({ theme }) => theme.fontFamily.text1};
   font-size: 1.5rem;
+  font-family: ${({ theme }) => theme.fontFamily.text1};
+  line-height: 1.25em;
+  font-weight: 300;
   color: ${({ theme }) => theme.colors.text2};
   background-color: ${({ theme }) => theme.colors.surface2};
   padding: 1em 0.75em;
   border-radius: ${({ theme }) => theme.borderRadius};
-  line-height: 1.25em;
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 2rem 0 1rem 0;
   width: 100%;
-  font-weight: 300;
   &::before,
   &::after {
     opacity: 0.75;
@@ -52,11 +66,19 @@ export function Quote() {
   return (
     <StyledQuote>
       <Blockquote>{data.text}</Blockquote>
-      <figcaption>
+      <FigCaption>
+        <div>
+          <div>
+            <a href={data.source}>Source</a>
+          </div>
+          <div>
+            <RefreshButton type="button">Refresh</RefreshButton>
+          </div>
+        </div>
         <div>
           <a href={`https://ctt.ac/${data.cttId}`}>Tweet</a>
         </div>
-      </figcaption>
+      </FigCaption>
     </StyledQuote>
   );
 }
