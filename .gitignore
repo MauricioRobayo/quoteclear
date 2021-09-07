@@ -1,5 +1,4 @@
 .envrc
-firestore-debug.log
 
 # Logs
 
@@ -10,6 +9,8 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log\*
+firestore-debug.log
+ui-debug.log
 
 # Firebase cache
 
