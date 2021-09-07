@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import { QuoteLoader } from "./loaders";
 import { linkStyle, smallText } from "../../styles/mixins";
 import { getQuote } from "../../services/api";
-import Skeleton from "react-loading-skeleton";
 
 const RefreshButton = styled.button`
   ${linkStyle}
@@ -57,8 +56,8 @@ export function Quote() {
 
   return (
     <StyledQuote>
-      <Blockquote isLoading={isFetching || Math.random() > 0}>
-        {isFetching || Math.random() > 0 ? (
+      <Blockquote isLoading={isFetching}>
+        {isFetching ? (
           <QuoteLoader />
         ) : (
           data.text
