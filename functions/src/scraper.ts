@@ -28,26 +28,31 @@ export function getPreviousThursday(date: Date): Date {
   return dt;
 }
 
-export async function getCttIds(date = new Date()): Promise<string[]> {
+export async function getCttIds(
+  date = new Date()
+): Promise<{ cttId: string; source: string }[]> {
   const previousThursday = getPreviousThursday(date);
   const formattedDate = formatDate(previousThursday);
   const url = `https://jamesclear.com/3-2-1/${formattedDate}`;
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
   const links = $('a[href^="https://ctt.ac/"]');
-  const cttIds = new Set<string>();
+  const cttIds = new Set<{ cttId: string; source: string }>();
 
   $(links).each(function (_, link) {
     const href = $(link).attr("href");
     if (href) {
-      cttIds.add(href.replace(/.*\//, ""));
+      cttIds.add({
+        cttId: href.replace(/.*\//, ""),
+        source: url,
+      });
     }
   });
 
   return [...cttIds];
 }
 
-export async function getQuote(cttId: string): Promise<QuoteStorage> {
+export async function getQuote(cttId: string): Promise<string> {
   const url = `https://clicktotweet.com/${cttId}`;
 
   const { data } = await axios.get(url);
@@ -58,5 +63,5 @@ export async function getQuote(cttId: string): Promise<QuoteStorage> {
     .replace(/[-–]\s*@JamesClear/g, "")
     .trim();
 
-  return { text, cttId };
+  return text;
 }
