@@ -55,7 +55,7 @@ const Footer = styled.footer`
     margin: 0;
   }
   flex: 1;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   text-align: center;
   display: flex;
   align-items: flex-end;
