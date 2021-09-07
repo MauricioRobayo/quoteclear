@@ -10,7 +10,7 @@ const RefreshButton = styled.button`
 `;
 const StyledQuote = styled.figure`
   margin: 4rem 1rem 0 1rem;
-  width: 100%;
+  /* width: 100%; */
 `;
 const FigCaption = styled.figcaption`
   * {
