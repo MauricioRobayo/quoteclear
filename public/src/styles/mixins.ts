@@ -7,9 +7,9 @@ export const linkStyle = css`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.text1};
   font-weight: bold;
-  text-decoration-color: ${({ theme }) => theme.colors.surface4};
-  text-underline-offset: 0.15em;
-  text-decoration-thickness: 0.15em;
+  text-decoration: none;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.surface4};
+  cursor: pointer;
 `;
 
 export const smallText = css`
