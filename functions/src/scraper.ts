@@ -1,6 +1,5 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { QuoteStorage } from "./types";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
