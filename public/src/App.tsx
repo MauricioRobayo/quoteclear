@@ -4,8 +4,17 @@ import { Normalize } from "styled-normalize";
 import { Quote } from "./components/Quote";
 import usePreferredColorScheme from "./hooks/usePreferredColorScheme";
 import { GlobalStyle, theme } from "./styles";
+import { smallText } from "./styles/mixins";
+
+const Wrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const Header = styled.header`
+  margin-top: 2rem;
   text-align: center;
   font-family: ${({ theme }) => theme.fontFamily.text2};
 `;
@@ -36,15 +45,29 @@ const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: ${({ theme }) => theme.maxWidth};
+  width: 100%;
+`;
+
+const Footer = styled.footer`
+  * {
+    ${smallText}
+    margin: 0;
+  }
+  flex: 1;
+  padding-bottom: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
 `;
 
 function App() {
   const preferredColorScheme = usePreferredColorScheme();
   return (
-    <>
-      <ThemeProvider theme={theme[preferredColorScheme]}>
-        <Normalize />
-        <GlobalStyle />
+    <ThemeProvider theme={theme[preferredColorScheme]}>
+      <Normalize />
+      <GlobalStyle />
+      <Wrapper>
         <Header>
           <Title>
             JAMES CLEAR{" "}
@@ -54,7 +77,7 @@ function App() {
           </Title>
           <div>
             <p>
-              Taken from{" "}
+              From{" "}
               <a href="https://jamesclear.com/3-2-1">The 3-2-1 Newsletter</a>.
             </p>
           </div>
@@ -62,8 +85,17 @@ function App() {
         <Main>
           <Quote />
         </Main>
-      </ThemeProvider>
-    </>
+        <Footer>
+          <p>
+            This is an{" "}
+            <a href="https://github.com/MauricioRobayo/james-clear-quotes">
+              open source
+            </a>{" "}
+            project.
+          </p>
+        </Footer>
+      </Wrapper>
+    </ThemeProvider>
   );
 }
 

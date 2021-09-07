@@ -1,16 +1,20 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { QueryClient, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { QuoteLoader } from "./loaders";
-import { linkStyle } from "../../styles/mixins";
+import { linkStyle, smallText } from "../../styles/mixins";
+import { getQuote } from "../../services/api";
 
 const RefreshButton = styled.button`
   ${linkStyle}
 `;
 const StyledQuote = styled.figure`
-  margin: 0 0.5rem;
+  margin: 2rem 1rem;
 `;
 const FigCaption = styled.figcaption`
+  * {
+    ${smallText}
+  }
   display: flex;
   justify-content: space-between;
   div {
@@ -21,20 +25,19 @@ const FigCaption = styled.figcaption`
   }
 `;
 const Blockquote = styled.blockquote`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-family: ${({ theme }) => theme.fontFamily.text1};
   line-height: 1.25em;
   font-weight: 300;
-  color: ${({ theme }) => theme.colors.text2};
+  color: ${({ theme }) => theme.colors.text1};
   background-color: ${({ theme }) => theme.colors.surface2};
-  padding: 1em 0.75em;
+  padding: 1em;
+  text-align: center;
   border-radius: ${({ theme }) => theme.borderRadius};
-  max-width: ${({ theme }) => theme.maxWidth};
-  margin: 2rem 0 1rem 0;
-  width: 100%;
+  margin: 0 0 0.5rem 0;
   &::before,
   &::after {
-    opacity: 0.75;
+    opacity: 0.5;
     font-size: 1.25em;
   }
   &::before {
@@ -46,20 +49,9 @@ const Blockquote = styled.blockquote`
 `;
 
 export function Quote() {
-  const { isLoading, error, data, refetch } = useQuery(
-    "repoData",
-    async () => {
-      const response = await fetch("/api/randomQuote");
-      if (!response.ok) {
-        throw new Error("Request failed!");
-      }
-      return response.json();
-    },
-    {
-      refetchOnWindowFocus: false,
-      enabled: false,
-    }
-  );
+  const { isLoading, error, data, refetch } = useQuery("repoData", getQuote, {
+    staleTime: Infinity,
+  });
 
   function newQuote() {
     refetch();

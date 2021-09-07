@@ -11,3 +11,8 @@ export const linkStyle = css`
   text-underline-offset: 0.15em;
   text-decoration-thickness: 0.15em;
 `;
+
+export const smallText = css`
+  font-size: 0.85rem;
+  color: ${({ theme }) => theme.colors.text2};
+`;
