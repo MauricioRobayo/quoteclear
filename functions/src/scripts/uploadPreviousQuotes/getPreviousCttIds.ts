@@ -4,7 +4,7 @@ import fs from "fs/promises";
 import path from "path";
 
 async function getPreviousCttIds() {
-  const allCttIds: string[] = [];
+  const allCttIds: { cttId: string; source: string }[] = [];
 
   for (const date of previousDates) {
     const wait = Math.ceil(Math.random() * 5);
@@ -14,7 +14,7 @@ async function getPreviousCttIds() {
     try {
       console.log(`Getting cttIds for ${date}...`);
       const dateCttIds = await getCttIds(new Date(date));
-      console.log(`Done! Got ${dateCttIds}`);
+      console.log(`Done! Got ${dateCttIds.length} references`);
       allCttIds.push(...dateCttIds);
     } catch (err) {
       console.log(`Failed on ${date}!`);
