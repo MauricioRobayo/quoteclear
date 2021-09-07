@@ -31,6 +31,13 @@ const Flip = styled.span`
   transform: scale(-1, 1);
 `;
 
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 function App() {
   const preferredColorScheme = usePreferredColorScheme();
   return (
@@ -52,7 +59,9 @@ function App() {
             </p>
           </div>
         </Header>
-        <Quote />
+        <Main>
+          <Quote />
+        </Main>
       </ThemeProvider>
     </>
   );

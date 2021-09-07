@@ -10,8 +10,9 @@ const brandColor = Color({
 const sharedStyles = {
   fontFamily: {
     text1: "'Crimson Pro', serif",
-    text2: "'Nunito', sans-serif",
+    text2: "'Nunito Sans', sans-serif",
   },
+  maxWidth: "768px",
 };
 
 export const theme: { light: DefaultTheme; dark: DefaultTheme } = {
