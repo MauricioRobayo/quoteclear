@@ -16,6 +16,7 @@ const FigCaption = styled.figcaption`
   * {
     ${smallText}
   }
+  padding: 1em;
   display: flex;
   justify-content: space-between;
   div {
@@ -34,7 +35,7 @@ const Blockquote = styled.blockquote<{ isLoading: boolean }>`
   background-color: ${({ theme }) => theme.colors.surface2};
   padding: 0.5em 1em;
   border-radius: ${({ theme }) => theme.borderRadius};
-  margin: 0 0 0.5rem 0;
+  margin: 0;
   p {
     margin: 0.5em 0;
   }
