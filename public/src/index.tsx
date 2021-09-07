@@ -4,12 +4,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Normalize } from "styled-normalize";
+import { GlobalStyle } from "./styles";
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
     <Normalize />
+    <GlobalStyle />
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>

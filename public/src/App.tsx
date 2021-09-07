@@ -1,25 +1,22 @@
 import React from "react";
-import { useQuery } from "react-query";
+import { Quote } from "./components/Quote";
 
 function App() {
-  const { isLoading, error, data } = useQuery("repoData", async () => {
-    const response = await fetch("/api/randomQuote");
-    if (!response.ok) {
-      throw new Error("Request failed!");
-    }
-    return response.json();
-  });
-
-  if (isLoading) return <div>"Loading..."</div>;
-
-  if (error) {
-    if (error instanceof Error) {
-      return <div>An error has occurred: {error.message}</div>;
-    }
-    return <div>An error has occured: {JSON.stringify(error, null, 2)}</div>;
-  }
-
-  return <div>{JSON.stringify(data, null, 2)}</div>;
+  return (
+    <>
+      <header>
+        <h1>JAMES CLEAR QUOTES</h1>
+        <div>
+          <p>
+            Taken from{" "}
+            <a href="https://jamesclear.com/3-2-1">The 3-2-1 Newsletter</a>
+          </p>
+          <p>“The most wisdom per word of any newsletter on the web.”</p>
+        </div>
+      </header>
+      <Quote />
+    </>
+  );
 }
 
 export default App;
