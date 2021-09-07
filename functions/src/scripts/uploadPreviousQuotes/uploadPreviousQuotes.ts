@@ -1,59 +1,27 @@
-import axios from "axios";
-import * as cheerio from "cheerio";
-import admin from "firebase-admin";
-import { getQuotes } from "../../scraper";
+import cleanQuotes from "./cleanQuotes.json";
+
+import * as admin from "firebase-admin";
 import { QuoteStorage } from "../../types";
-import fs from "fs/promises";
-import path from "path";
 
 admin.initializeApp();
+
 const db = admin.firestore();
 
-async function getPreviousUrls() {
-  try {
-    const { data } = await axios.get("https://jamesclear.com/3-2-1");
-    const $ = cheerio.load(data);
-    const links = $("a.all-articles__news__post");
+Promise.all(cleanQuotes.map(insertQuote))
+  .then(() => {
+    console.log("Done!");
+    process.exit();
+  })
+  .catch((err) => {
+    console.log(err);
+    process.exit(1);
+  });
 
-    const dates: Date[] = [];
-    $(links).each((_, link) => {
-      const href = $(link).attr("href");
-      if (href) {
-        const date = new Date(href.replace(/.*\//, ""));
-        dates.push(date);
-      }
-    });
-
-    const quotesPerDate = await Promise.all(
-      dates.map(async (date) => {
-        const quotes = await getQuotes(date);
-        await Promise.all(quotes.map(addQuoteToDb));
-        return quotes;
-      })
-    );
-
-    await fs.writeFile(
-      path.join(__dirname, "quotes.json"),
-      JSON.stringify(quotesPerDate.flat())
-    );
-  } catch (err) {
-    console.log("getPreviousUrls", err);
+async function insertQuote(quote: QuoteStorage) {
+  const docRef = db.collection("cache").doc(quote.cttId);
+  const doc = await docRef.get();
+  if (doc.exists) {
+    return;
   }
+  return docRef.set(quote);
 }
-
-async function addQuoteToDb({ text, cttId }: QuoteStorage) {
-  try {
-    const docRef = db.collection("quotes").doc(cttId);
-    const doc = await docRef.get();
-    if (doc.exists) {
-      console.log(`Doc '${docRef.id} already exists!`);
-      return;
-    }
-    await docRef.set({ text, cttId });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
-
-getPreviousUrls();

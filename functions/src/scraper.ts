@@ -28,11 +28,7 @@ export function getPreviousThursday(date: Date): Date {
   return dt;
 }
 
-function validQuote(quote: QuoteStorage | null): quote is QuoteStorage {
-  return quote !== null;
-}
-
-export async function getQuotes(date = new Date()): Promise<QuoteStorage[]> {
+export async function getCttIds(date = new Date()): Promise<string[]> {
   const previousThursday = getPreviousThursday(date);
   const formattedDate = formatDate(previousThursday);
   const url = `https://jamesclear.com/3-2-1/${formattedDate}`;
@@ -48,20 +44,19 @@ export async function getQuotes(date = new Date()): Promise<QuoteStorage[]> {
     }
   });
 
-  return (await Promise.all([...cttIds].map(getQuote))).filter(validQuote);
+  return [...cttIds];
 }
 
-async function getQuote(cttId: string): Promise<QuoteStorage | null> {
+export async function getQuote(cttId: string): Promise<QuoteStorage> {
   const url = `https://clicktotweet.com/${cttId}`;
 
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
-  const title = $("title").text();
-  const match = title.replace(/["“”]/g, "").replace(/-@JamesClear/g, "");
-  if (!match) {
-    console.log(`Could not find quote in url '${url}' with title '${title}'`);
-    return null;
-  }
+  const text = $("title")
+    .text()
+    .replace(/["“”]/g, "")
+    .replace(/[-–]\s*@JamesClear/g, "")
+    .trim();
 
-  return { text: match[1], cttId };
+  return { text, cttId };
 }
