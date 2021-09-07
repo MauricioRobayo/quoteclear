@@ -12,7 +12,7 @@ async function getPreviousQuotes() {
     await new Promise((resolve) => setTimeout(resolve, wait * 1000));
 
     try {
-      console.log(`Getting quote for ${cttId}...`);
+      console.log(`Getting quote for ${cttId.cttId}...`);
       const quote = await getQuote(cttId.cttId);
       console.log(`Done! Got ${JSON.stringify(quote, undefined, 2)}`);
 

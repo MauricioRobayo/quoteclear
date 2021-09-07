@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import { QuoteStorage } from "../../types";
-import cleanQuotes from "./cleanQuotes.json";
+import cleanQuotes from "./previousQuotes.json";
 
 admin.initializeApp();
 
