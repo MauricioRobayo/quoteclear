@@ -49,7 +49,7 @@ export async function getCttIds(
     }
   });
 
-  return Object.values(cttIds);
+  return [...cttIds.values()];
 }
 
 export async function getQuote(cttId: string): Promise<string> {
