@@ -1,6 +1,14 @@
 import * as functions from "firebase-functions";
+import * as admin from "firebase-admin";
 
-export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", { structuredData: true });
-  response.send("Hello from Firebase!");
+admin.initializeApp();
+
+const db = admin.firestore();
+
+export const randomQuote = functions.https.onRequest(async (req, res) => {
+  const snapshot = await db.collection("quotes").get();
+  const randomQuote =
+    snapshot.docs[Math.floor(Math.random() * snapshot.docs.length)];
+  functions.logger.log("quote:", randomQuote.data());
+  res.json(randomQuote.data());
 });

@@ -1,7 +1,6 @@
-import cleanQuotes from "./cleanQuotes.json";
-
 import * as admin from "firebase-admin";
 import { QuoteStorage } from "../../types";
+import cleanQuotes from "./cleanQuotes.json";
 
 admin.initializeApp();
 
@@ -18,7 +17,7 @@ Promise.all(cleanQuotes.map(insertQuote))
   });
 
 async function insertQuote(quote: QuoteStorage) {
-  const docRef = db.collection("cache").doc(quote.cttId);
+  const docRef = db.collection("quotes").doc(quote.cttId);
   const doc = await docRef.get();
   if (doc.exists) {
     return;
