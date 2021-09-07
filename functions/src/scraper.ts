@@ -36,19 +36,20 @@ export async function getCttIds(
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
   const links = $('a[href^="https://ctt.ac/"]');
-  const cttIds = new Set<{ cttId: string; source: string }>();
+  const cttIds = new Map<string, { cttId: string; source: string }>();
 
   $(links).each(function (_, link) {
     const href = $(link).attr("href");
     if (href) {
-      cttIds.add({
-        cttId: href.replace(/.*\//, ""),
+      const cttId = href.replace(/.*\//, "");
+      cttIds.set(cttId, {
+        cttId,
         source: url,
       });
     }
   });
 
-  return [...cttIds];
+  return Object.values(cttIds);
 }
 
 export async function getQuote(cttId: string): Promise<string> {
