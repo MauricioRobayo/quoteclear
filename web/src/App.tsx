@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled, { ThemeProvider } from "styled-components/macro";
 import { Normalize } from "styled-normalize";
 import { Quote } from "./components/Quote";
 import usePreferredColorScheme from "./hooks/usePreferredColorScheme";
 import { GlobalStyle, theme } from "./styles";
 import { smallText } from "./styles/mixins";
-import ReactGA from "react-ga";
 
 const Wrapper = styled.div`
   height: 100vh;
