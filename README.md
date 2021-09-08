@@ -2,8 +2,8 @@
 
 Ever-growing list of [@JamesClear](https://twitter.com/JamesClear) quotes from the [3-2-1 Newsletter](https://jamesclear.com/3-2-1)
 
-- [Web app](https://james-clear-quotes.web.app)
-- [JSON API](https://james-clear-quotes.web.app/api/random)
+- [Web app](https://quoteclear.web.app)
+- [JSON API](https://quoteclear.web.app/api/random)
 
 ## Development
 
@@ -39,7 +39,7 @@ Give a ⭐️ if you like this project!
 
 All content is authored by [@JamesClear](https://twitter.com/JamesClear).
 
-If you are using the [JSON API](https://james-clear-quotes.web.app/api/random), please properly give credit to him and if you haven't already, consider subscribing to his [newsletter](https://jamesclear.com/3-2-1).
+If you are using the [JSON API](https://quoteclear.web.app/api/random), please properly give credit to him and if you haven't already, consider subscribing to his [newsletter](https://jamesclear.com/3-2-1).
 
 ## LICENSE
 
