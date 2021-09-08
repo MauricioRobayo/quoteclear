@@ -50,6 +50,10 @@ export function Quote() {
 
   function getNewQuote() {
     refetch();
+    window.gtag("event", "refresh", {
+      event_category: "engagement",
+      event_label: "new quote requested",
+    });
   }
 
   if (error) {
