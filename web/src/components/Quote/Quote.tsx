@@ -76,7 +76,7 @@ export function Quote() {
               <a href={data.source}>Source</a>
             </div>
             <div>
-              <RefreshButton type="button" onClick={() => refetch()}>
+              <RefreshButton type="button" onClick={getNewQuote}>
                 Refresh
               </RefreshButton>
             </div>
