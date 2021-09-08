@@ -1,6 +1,6 @@
 # James Clear Quotes from The 3-2-1 Newsletter
 
-Ever growing list of [@JamesClear](https://twitter.com/JamesClear) quotes from the [3-2-1 Newsletter](https://jamesclear.com/3-2-1)
+Ever-growing list of [@JamesClear](https://twitter.com/JamesClear) quotes from the [3-2-1 Newsletter](https://jamesclear.com/3-2-1)
 
 - [Web app](https://james-clear-quotes.web.app)
 - [JSON API](https://james-clear-quotes.web.app/api/random)
