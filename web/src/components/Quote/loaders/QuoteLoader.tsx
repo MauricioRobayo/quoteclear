@@ -9,7 +9,7 @@ export const QuoteLoader = () => {
 
   return (
     <SkeletonTheme
-      color={preferredTheme.colors.surface3}
+      color={preferredTheme.colors.surface2}
       highlightColor={preferredTheme.colors.surface4}
     >
       <p>
