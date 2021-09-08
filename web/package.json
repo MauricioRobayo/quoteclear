@@ -48,7 +48,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://127.0.0.1:5001/james-clear-quotes/us-central1/randomQuote",
+  "proxy": "http://127.0.0.1:5001/quoteclear/us-central1/randomQuote",
   "devDependencies": {
     "@types/gtag.js": "^0.0.7"
   }
