@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import { QuoteLoader } from "./loaders";
 import { linkStyle, smallText } from "../../styles/mixins";
 import { getQuote } from "../../services/api";
-import ReactGA from "react-ga";
 
 const RefreshButton = styled.button`
   ${linkStyle}
@@ -51,10 +50,6 @@ export function Quote() {
 
   function getNewQuote() {
     refetch();
-    ReactGA.event({
-      action: "refresh",
-      category: "engagement",
-    });
   }
 
   if (error) {

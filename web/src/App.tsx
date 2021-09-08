@@ -62,10 +62,7 @@ const Footer = styled.footer`
 
 function App() {
   const preferredColorScheme = usePreferredColorScheme();
-  useEffect(() => {
-    ReactGA.initialize("G-F3HCZPDM8C");
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
+
   return (
     <ThemeProvider theme={theme[preferredColorScheme]}>
       <Normalize />
