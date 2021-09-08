@@ -49,13 +49,14 @@ const Main = styled.main`
 const Footer = styled.footer`
   * {
     ${smallText}
-    margin: 0;
+    margin: 0.5rem 0;
   }
   flex: 1;
   padding-bottom: 1rem;
   text-align: center;
   display: flex;
-  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
 `;
 
 function App() {
@@ -74,8 +75,7 @@ function App() {
           </Title>
           <div>
             <p>
-              from{" "}
-              <a href="https://jamesclear.com/3-2-1">The 3-2-1 Newsletter</a>
+              from <a href="https://jamesclear.com/3-2-1">3-2-1 Newsletter</a>
             </p>
           </div>
         </Header>
@@ -83,6 +83,9 @@ function App() {
           <Quote />
         </Main>
         <Footer>
+          <p>
+            <a href="https://james-clear-quotes.web.app/api/random">JSON API</a>
+          </p>
           <p>
             This is an{" "}
             <a href="https://github.com/MauricioRobayo/james-clear-quotes">
