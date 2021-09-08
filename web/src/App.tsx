@@ -85,11 +85,11 @@ function App() {
         </Main>
         <Footer>
           <p>
-            <a href="https://james-clear-quotes.web.app/api/random">JSON API</a>
+            <a href="https://quoteclear.web.app/api/random">JSON API</a>
           </p>
           <p>
             This is an{" "}
-            <a href="https://github.com/MauricioRobayo/james-clear-quotes">
+            <a href="https://github.com/MauricioRobayo/quoteclear">
               open source
             </a>{" "}
             project.
