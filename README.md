@@ -1,6 +1,6 @@
 # James Clear Quotes
 
-The 3-2-1 Newsletter is one of the most popular newsletters in the world.
+The [3-2-1 Thursday](https://jamesclear.com/3-2-1) newsletter is one of the most popular newsletters in the world.
 
 Every Thursday, the latest issue is sent to over 1,000,000 people.
 
