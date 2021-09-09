@@ -13,7 +13,7 @@ export const QuoteLoader = () => {
       highlightColor={preferredTheme.colors.surface4}
     >
       <p>
-        <Skeleton count={5} />
+        <Skeleton count={3} />
       </p>
     </SkeletonTheme>
   );
