@@ -8,12 +8,10 @@
     "strict": true,
     "target": "es2017",
     "esModuleInterop": true,
-    "resolveJsonModule": true,
     "importHelpers": true,
     "removeComments": true,
     "forceConsistentCasingInFileNames": true
   },
   "compileOnSave": true,
-  "include": ["src"],
-  "exclude": ["src/scripts"]
+  "include": ["src"]
 }

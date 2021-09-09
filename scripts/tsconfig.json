@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "importHelpers": true,
+    "removeComments": true,
+    "target": "es5",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  }
+}

@@ -1,5 +1,5 @@
-import { getQuote } from "../../scraper";
-import { QuoteStorage } from "../../types";
+import { getQuote } from "../../functions/src/scraper";
+import { QuoteStorage } from "../../functions/src/types";
 import cttIds from "./previousCttIds.json";
 import fs from "fs/promises";
 import path from "path";

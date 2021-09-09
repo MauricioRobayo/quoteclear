@@ -1,5 +1,5 @@
 import previousDates from "./previousDates.json";
-import { getCttIds } from "../../scraper";
+import { getCttIds } from "../../functions/src/scraper";
 import fs from "fs/promises";
 import path from "path";
 
