@@ -7,24 +7,23 @@ Ever-growing list of [@JamesClear](https://twitter.com/JamesClear) quotes from t
 
 ## Development
 
-1. Start the `functions` and `firestore` emulators:
+2. Run the `watch` script inside the functions directory:
 
 ```
-firebase emulators start
+cd functions && npm run watch
 ```
 
-2. Seed the `firestore` emulator:
+1. Run the `emulators` script from the `scripts` directory, it will start the `functions` and `firestore` emulators and populate `firestore` emulator:
 
 ```
-cd functions
-FIRESTORE_EMULATOR_HOST="localhost:8080" npx ts-node src/scripts/seedDb/seedDb.ts
+cs scripts && npm run emulators
 ```
 
 3. Start the web app:
 
 ```
 cd web
-npm start
+cd web && npm start
 ```
 
 ## Contributing
