@@ -67,7 +67,7 @@ export function Quote() {
   return (
     <Wrapper>
       <StyledQuote>
-        <Blockquote>
+        <Blockquote cite={data?.source || ""}>
           {data ? (
             data.text
               .split("\n")
