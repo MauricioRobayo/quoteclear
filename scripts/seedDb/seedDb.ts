@@ -16,11 +16,6 @@ Promise.all(cleanQuotes.map(insertQuote))
     process.exit(1);
   });
 
-async function insertQuote(quote: QuoteStorage) {
-  const docRef = db.collection("quotes").doc(quote.cttId);
-  const doc = await docRef.get();
-  if (doc.exists) {
-    return;
-  }
-  return docRef.set(quote);
+function insertQuote(quote: QuoteStorage) {
+  return db.collection("quotes").doc(quote.cttId).set(quote);
 }
