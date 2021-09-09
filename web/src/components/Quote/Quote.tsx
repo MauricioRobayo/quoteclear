@@ -8,24 +8,25 @@ import { getQuote } from "../../services/api";
 const RefreshButton = styled.button`
   ${linkStyle}
 `;
-const StyledQuote = styled.figure`
+const Wrapper = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 4rem 1rem 0 1rem;
   width: 100%;
 `;
+const StyledQuote = styled.figure`
+  margin: 0;
+`;
 const FigCaption = styled.figcaption`
-  * {
-    ${smallText}
-  }
-  padding: 1em;
+  ${smallText}
   display: flex;
   justify-content: space-between;
-  div {
-    display: flex;
-    & > div:not(:last-child) {
-      margin-right: 1em;
-    }
+  padding: 1em;
+`;
+const Actions = styled.div`
+  & > *:not(:last-child) {
+    margin-right: 1em;
   }
+  display: flex;
 `;
 const Blockquote = styled.blockquote<{ isLoading: boolean }>`
   font-size: 1.25rem;
@@ -64,34 +65,36 @@ export function Quote() {
   }
 
   return (
-    <StyledQuote>
-      <Blockquote isLoading={isFetching}>
-        {isFetching ? (
-          <QuoteLoader />
-        ) : (
-          data.text
-            .split("\n")
-            .filter((line: string) => line.trim() !== "")
-            .map((line: string, index: number) => <p key={index}>{line}</p>)
-        )}
-      </Blockquote>
-      {isFetching ? null : (
-        <FigCaption>
-          <div>
+    <Wrapper>
+      <StyledQuote>
+        <Blockquote isLoading={isFetching}>
+          {isFetching ? (
+            <QuoteLoader />
+          ) : (
+            data.text
+              .split("\n")
+              .filter((line: string) => line.trim() !== "")
+              .map((line: string, index: number) => <p key={index}>{line}</p>)
+          )}
+        </Blockquote>
+        {isFetching ? null : (
+          <FigCaption>
             <div>
-              <a href={data.source}>Source</a>
+              <a href={data.source}>
+                {data.source.replace("https://jamesclear.com/", "")}
+              </a>
             </div>
-            <div>
+            <Actions>
               <RefreshButton type="button" onClick={getNewQuote}>
                 Refresh
               </RefreshButton>
-            </div>
-          </div>
-          <div>
-            <a href={`https://ctt.ac/${data.cttId}`}>Tweet</a>
-          </div>
-        </FigCaption>
-      )}
-    </StyledQuote>
+              <div>
+                <a href={`https://ctt.ac/${data.cttId}`}>Tweet</a>
+              </div>
+            </Actions>
+          </FigCaption>
+        )}
+      </StyledQuote>
+    </Wrapper>
   );
 }

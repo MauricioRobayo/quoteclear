@@ -10,4 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   a {
     ${linkStyle}
   }
+  p {
+    margin: 0.5em 0;
+  }
 `;

@@ -47,10 +47,8 @@ const Main = styled.main`
 `;
 
 const Footer = styled.footer`
-  * {
-    ${smallText}
-    margin: 0.5rem 0;
-  }
+  ${smallText}
+  margin: 0.5rem 0;
   flex: 1;
   padding-bottom: 1rem;
   text-align: center;
