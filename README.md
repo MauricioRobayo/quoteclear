@@ -1,9 +1,18 @@
-# James Clear Quotes from The 3-2-1 Newsletter
+# James Clear Quotes from the 3-2-1 Newsletter
 
-Ever-growing list of [@JamesClear](https://twitter.com/JamesClear) quotes from the [3-2-1 Newsletter](https://jamesclear.com/3-2-1)
+The 3-2-1 Newsletter is one of the most popular newsletters in the world.
 
-- [Web app](https://quoteclear.web.app)
-- [JSON API](https://quoteclear.web.app/api/random)
+Every Thursday, the latest issue is sent to over 1,000,000 people.
+
+Each message includes 3 short ideas from James Clear, 2 quotes from others, and 1 question to ponder.
+
+Most of the 3 ideas sent are short enough to fit on a tweet.
+
+This project collects those ideas and makes them available through an open source and free [JSON API](https://quoteclear.web.app/api/random) (not all quotes are included, just the ones that fit on a tweet).
+
+New quotes are automatically included every Thursday after the newsletter has been sent.
+
+You can visit the [web app](<(https://quoteclear.web.app)>) to get a taste of it.
 
 ## Development
 
