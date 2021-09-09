@@ -12,7 +12,7 @@ This project collects those ideas and makes them available through an open sourc
 
 New quotes are automatically included every Thursday after the newsletter has been sent.
 
-You can visit the [web app](https://quoteclear.web.app) to get a taste of it.
+Visit the [web app](https://quoteclear.web.app) to get a taste of it.
 
 ## Development
 
