@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { QuoteLoader } from "./loaders";
 import { linkStyle, smallText } from "../../styles/mixins";
 import { getQuote } from "../../services/api";
+import { VscRefresh, VscTwitter } from "react-icons/vsc";
 
 const RefreshButton = styled.button`
   ${linkStyle}
@@ -17,7 +18,6 @@ const StyledQuote = styled.figure`
   margin: 0;
 `;
 const FigCaption = styled.figcaption`
-  ${smallText}
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -41,6 +41,19 @@ const Blockquote = styled.blockquote`
   margin: 0;
   p {
     margin: 0.5em 0;
+  }
+`;
+const Cite = styled.cite`
+  ${smallText}
+
+  font-style: normal;
+`;
+const Action = styled.div`
+  * {
+    border: none;
+  }
+  *:hover {
+    border: none;
   }
 `;
 
@@ -79,18 +92,22 @@ export function Quote() {
         </Blockquote>
         {data ? (
           <FigCaption>
-            <div>
+            <Cite>
               <a href={data.source}>
                 {data.source.replace("https://jamesclear.com/", "")}
               </a>
-            </div>
+            </Cite>
             <Actions>
-              <RefreshButton type="button" onClick={getNewQuote}>
-                Refresh
-              </RefreshButton>
-              <div>
-                <a href={`https://ctt.ac/${data.cttId}`}>Tweet</a>
-              </div>
+              <Action>
+                <RefreshButton type="button" onClick={getNewQuote}>
+                  <VscRefresh />
+                </RefreshButton>
+              </Action>
+              <Action>
+                <a title="Tweet" href={`https://ctt.ac/${data.cttId}`}>
+                  <VscTwitter />
+                </a>
+              </Action>
             </Actions>
           </FigCaption>
         ) : null}
