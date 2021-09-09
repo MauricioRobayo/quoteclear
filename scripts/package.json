@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "emulators": "firebase emulators:start --import=./firestore-data --export-on-exit",
     "seedDb": "npx ts-node seedDb/seedDb.ts",
+    "seedDb:emulator": "FIRESTORE_EMULATOR_HOST=localhost:8080 npx ts-node seedDb/seedDb.ts",
     "lint": "eslint src --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
