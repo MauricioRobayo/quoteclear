@@ -1,4 +1,4 @@
-# James Clear Quotes from the 3-2-1 Newsletter
+# James Clear Quotes
 
 The 3-2-1 Newsletter is one of the most popular newsletters in the world.
 
