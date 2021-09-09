@@ -74,7 +74,7 @@ function App() {
           </Title>
           <div>
             <p>
-              from <a href="https://jamesclear.com/3-2-1">3-2-1 Newsletter</a>
+              from <a href="https://jamesclear.com/3-2-1">3-2-1 Thursday</a>
             </p>
           </div>
         </Header>
