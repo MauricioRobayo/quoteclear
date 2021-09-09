@@ -20,7 +20,7 @@ const FigCaption = styled.figcaption`
   ${smallText}
   display: flex;
   justify-content: space-between;
-  padding: 1em;
+  padding: 1rem;
 `;
 const Actions = styled.div`
   & > *:not(:last-child) {
@@ -35,7 +35,7 @@ const Blockquote = styled.blockquote`
   font-weight: 300;
   color: ${({ theme }) => theme.colors.text1};
   background-color: ${({ theme }) => theme.colors.surface3};
-  padding: 0.5em 1em;
+  padding: 0.5rem 1rem;
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: ${({ theme }) => theme.colors.surfaceShadow} 2px 4px 6px 0px;
   margin: 0;
