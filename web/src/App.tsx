@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  margin-top: 2rem;
+  margin-top: 5vh;
   text-align: center;
   font-family: ${({ theme }) => theme.fontFamily.text2};
 `;
