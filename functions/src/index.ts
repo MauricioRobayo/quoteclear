@@ -1,5 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
+import { getCttIds, getQuote } from "./scraper";
+import { QuoteStorage } from "./types";
 
 admin.initializeApp();
 
@@ -14,3 +16,40 @@ export const randomQuote = functions.https.onRequest(async (req, res) => {
   functions.logger.log("quote:", randomQuote.data());
   res.json(randomQuote.data());
 });
+
+export const getLatestQuotes = functions.pubsub
+  .schedule("every friday 17:00")
+  .timeZone("America/New_York") // default is America/Los_Angeles
+  .onRun(async () => {
+    const cttIds = await getCttIds();
+    functions.logger.log(`Got ${cttIds.length} cttIds`);
+
+    const quotesPromises: Promise<QuoteStorage | null>[] = cttIds.map(
+      async ({ cttId, source }) => {
+        try {
+          const text = await getQuote(cttId);
+
+          return {
+            cttId,
+            text,
+            source,
+          };
+        } catch (err) {
+          functions.logger.error(`Failed to get text for cttId '${cttId}'`);
+          return null;
+        }
+      }
+    );
+
+    const quotes = await Promise.all(quotesPromises);
+
+    const writeResultsPromises = quotes
+      .filter(isQuote)
+      .map((quote) => db.collection("quotes").doc(quote.cttId).set(quote));
+
+    await Promise.all(writeResultsPromises);
+  });
+
+function isQuote(quote: QuoteStorage | null): quote is QuoteStorage {
+  return quote !== null;
+}
