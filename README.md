@@ -16,13 +16,13 @@ Visit the [web app](https://quoteclear.web.app) to get a taste of it.
 
 ## Development
 
-2. Run the `watch` script inside the functions directory:
+1. Run the `watch` script inside the functions directory:
 
 ```
 cd functions && npm run watch
 ```
 
-1. Run the `emulators` script from the `scripts` directory, it will start the `functions` and `firestore` emulators and populate `firestore` emulator:
+2. Run the `emulators` script from the `scripts` directory, it will start the `functions` and `firestore` emulators and populate `firestore` emulator:
 
 ```
 cs scripts && npm run emulators
