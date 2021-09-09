@@ -28,7 +28,7 @@ const Actions = styled.div`
   }
   display: flex;
 `;
-const Blockquote = styled.blockquote<{ isLoading: boolean }>`
+const Blockquote = styled.blockquote`
   font-size: 1.25rem;
   font-family: ${({ theme }) => theme.fontFamily.text1};
   line-height: 1.25em;
@@ -67,7 +67,7 @@ export function Quote() {
   return (
     <Wrapper>
       <StyledQuote>
-        <Blockquote isLoading={isFetching}>
+        <Blockquote>
           {isFetching ? (
             <QuoteLoader />
           ) : (
