@@ -1,5 +1,5 @@
-import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
+import * as functions from "firebase-functions";
 import { getCttIds, getQuoteText } from "./scraper";
 import { QuoteStorage } from "./types";
 
@@ -52,7 +52,3 @@ export const getLatestQuotes = functions.pubsub
 
     await Promise.all(quotesPromises);
   });
-
-function isQuote(quote: QuoteStorage | null): quote is QuoteStorage {
-  return quote !== null;
-}
