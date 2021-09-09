@@ -52,7 +52,7 @@ export async function getCttIds(
   return [...cttIds.values()];
 }
 
-export async function getQuote(cttId: string): Promise<string> {
+export async function getQuoteText(cttId: string): Promise<string> {
   const url = `https://clicktotweet.com/${cttId}`;
 
   const { data } = await axios.get(url);

@@ -1,11 +1,14 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-import { getCttIds, getQuote } from "./scraper";
+import { getCttIds, getQuoteText } from "./scraper";
 import { QuoteStorage } from "./types";
 
 admin.initializeApp();
 
 const db = admin.firestore();
+
+const log = functions.logger.log;
+const errLog = functions.logger.error;
 
 export const randomQuote = functions.https.onRequest(async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
@@ -22,32 +25,32 @@ export const getLatestQuotes = functions.pubsub
   .timeZone("America/New_York") // default is America/Los_Angeles
   .onRun(async () => {
     const cttIds = await getCttIds();
-    functions.logger.log(`Got ${cttIds.length} cttIds`);
+    log(`Got ${cttIds.length} cttIds`);
 
     const quotesPromises: Promise<QuoteStorage | null>[] = cttIds.map(
       async ({ cttId, source }) => {
         try {
-          const text = await getQuote(cttId);
+          const text = await getQuoteText(cttId);
 
-          return {
+          const quote = {
             cttId,
             text,
             source,
           };
+
+          await db.collection("quotes").doc(quote.cttId).set(quote);
+
+          log(`Inserted '${cttId}' into database.`);
+
+          return quote;
         } catch (err) {
-          functions.logger.error(`Failed to get text for cttId '${cttId}'`);
+          errLog(`Failed to get text for cttId '${cttId}'`, err);
           return null;
         }
       }
     );
 
-    const quotes = await Promise.all(quotesPromises);
-
-    const writeResultsPromises = quotes
-      .filter(isQuote)
-      .map((quote) => db.collection("quotes").doc(quote.cttId).set(quote));
-
-    await Promise.all(writeResultsPromises);
+    await Promise.all(quotesPromises);
   });
 
 function isQuote(quote: QuoteStorage | null): quote is QuoteStorage {

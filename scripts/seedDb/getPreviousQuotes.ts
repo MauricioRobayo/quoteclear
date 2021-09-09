@@ -1,4 +1,4 @@
-import { getQuote } from "../../functions/src/scraper";
+import { getQuoteText } from "../../functions/src/scraper";
 import { QuoteStorage } from "../../functions/src/types";
 import cttIds from "./previousCttIds.json";
 import fs from "fs/promises";
@@ -13,7 +13,7 @@ async function getPreviousQuotes() {
 
     try {
       console.log(`Getting quote for ${cttId.cttId}...`);
-      const quote = await getQuote(cttId.cttId);
+      const quote = await getQuoteText(cttId.cttId);
       console.log(`Done! Got ${JSON.stringify(quote, undefined, 2)}`);
 
       quotes.push({
