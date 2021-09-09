@@ -58,7 +58,7 @@ const Action = styled.div`
 `;
 
 export function Quote() {
-  const { error, data, refetch } = useQuery("repoData", getQuote, {
+  const { isFetching, error, data, refetch } = useQuery("repoData", getQuote, {
     staleTime: Infinity,
   });
 
@@ -81,13 +81,13 @@ export function Quote() {
     <Wrapper>
       <StyledQuote>
         <Blockquote cite={data?.source || ""}>
-          {data ? (
+          {isFetching || !data ? (
+            <QuoteLoader />
+          ) : (
             data.text
               .split("\n")
               .filter((line: string) => line.trim() !== "")
               .map((line: string, index: number) => <p key={index}>{line}</p>)
-          ) : (
-            <QuoteLoader />
           )}
         </Blockquote>
         {data ? (
