@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { useQuery } from "react-query";
-import { QuoteLoader } from "./loaders";
+import { QuoteLoader, ButtonLoader } from "./loaders";
 import { linkStyle, smallText } from "../../styles/mixins";
 import { getQuote } from "../../services/api";
 import { VscRefresh, VscTwitter } from "react-icons/vsc";
@@ -58,58 +58,67 @@ const Action = styled.div`
 `;
 
 export function Quote() {
-  const { isFetching, error, data, refetch } = useQuery("quote", getQuote, {
+  const quoteQuery = useQuery("quote", getQuote, {
     staleTime: Infinity,
   });
 
   function getNewQuote() {
-    refetch();
+    quoteQuery.refetch();
     window.gtag("event", "refresh", {
       event_category: "engagement",
       event_label: "new quote requested",
     });
   }
 
-  if (error) {
+  if (quoteQuery.isError) {
     const errMsg =
-      error instanceof Error ? error.message : JSON.stringify(error, null, 2);
+      quoteQuery.error instanceof Error
+        ? quoteQuery.error.message
+        : JSON.stringify(quoteQuery.error, null, 2);
     return <div>An error has occurred: {errMsg}</div>;
   }
 
   return (
     <Wrapper>
       <StyledQuote>
-        <Blockquote cite={data?.source || ""}>
-          {isFetching || !data ? (
+        <Blockquote cite={quoteQuery.data?.source || ""}>
+          {quoteQuery.isLoading || quoteQuery.isIdle ? (
             <QuoteLoader />
           ) : (
-            data.text
+            quoteQuery.data.text
               .split("\n")
               .filter((line: string) => line.trim() !== "")
               .map((line: string, index: number) => <p key={index}>{line}</p>)
           )}
         </Blockquote>
-        {data ? (
+        {quoteQuery.isLoading || quoteQuery.isIdle ? null : (
           <FigCaption>
             <Cite>
-              <a href={data.source}>
-                {data.source.replace("https://jamesclear.com/", "")}
+              <a href={quoteQuery.data.source}>
+                {quoteQuery.data.source.replace("https://jamesclear.com/", "")}
               </a>
             </Cite>
             <Actions>
               <Action>
-                <RefreshButton type="button" onClick={getNewQuote}>
-                  <VscRefresh />
-                </RefreshButton>
+                {quoteQuery.isFetching ? (
+                  <ButtonLoader />
+                ) : (
+                  <RefreshButton type="button" onClick={getNewQuote}>
+                    <VscRefresh />
+                  </RefreshButton>
+                )}
               </Action>
               <Action>
-                <a title="Tweet" href={`https://ctt.ac/${data.cttId}`}>
+                <a
+                  title="Tweet"
+                  href={`https://ctt.ac/${quoteQuery.data.cttId}`}
+                >
                   <VscTwitter />
                 </a>
               </Action>
             </Actions>
           </FigCaption>
-        ) : null}
+        )}
       </StyledQuote>
     </Wrapper>
   );
