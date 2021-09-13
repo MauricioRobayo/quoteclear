@@ -28,6 +28,12 @@ cd functions && npm run watch
 cs scripts && npm run emulators
 ```
 
+Populate `firestore` with initial data:
+
+```
+cd scripts && npm run seedDb:emulator
+```
+
 3. Start the web app:
 
 ```
