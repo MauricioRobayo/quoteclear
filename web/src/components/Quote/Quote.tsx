@@ -71,10 +71,9 @@ export function Quote() {
   }
 
   if (error) {
-    if (error instanceof Error) {
-      return <div>An error has occurred: {error.message}</div>;
-    }
-    return <div>An error has occurred: {JSON.stringify(error, null, 2)}</div>;
+    const errMsg =
+      error instanceof Error ? error.message : JSON.stringify(error, null, 2);
+    return <div>An error has occurred: {errMsg}</div>;
   }
 
   return (
