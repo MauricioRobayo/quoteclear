@@ -58,7 +58,7 @@ const Action = styled.div`
 `;
 
 export function Quote() {
-  const { isFetching, error, data, refetch } = useQuery("repoData", getQuote, {
+  const { isFetching, error, data, refetch } = useQuery("quote", getQuote, {
     staleTime: Infinity,
   });
 
