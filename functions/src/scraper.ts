@@ -63,5 +63,9 @@ export async function getQuoteText(cttId: string): Promise<string> {
     .replace(/[-–]\s*@JamesClear/g, "")
     .trim();
 
+  if (!/\w/.test(text)) {
+    throw new Error(`getQuoteTest: could not find text for ${cttId}`);
+  }
+
   return text;
 }
