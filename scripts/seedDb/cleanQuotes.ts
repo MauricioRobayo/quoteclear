@@ -1,4 +1,4 @@
-import { QuoteStorage } from "../../types";
+import { QuoteStorage } from "../../functions/src/types";
 import previousQuotes from "./previousQuotes.json";
 import path from "path";
 import fs from "fs";
