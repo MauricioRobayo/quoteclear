@@ -59,7 +59,6 @@ export async function getQuoteText(cttId: string): Promise<string> {
   const $ = cheerio.load(data);
   const text = $("title")
     .text()
-    .replace(/["“”]/g, "")
     .replace(/[-–]\s*@JamesClear/g, "")
     .trim();
 
