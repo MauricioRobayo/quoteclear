@@ -24,7 +24,7 @@ const Loader = styled.div`
     border: 1.5px solid ${({ theme }) => theme.colors.brand};
     border-radius: 50%;
     animation: ${loadingRing} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${({ theme }) => theme.colors.brand} transparent transparent
+    border-color: ${({ theme }) => theme.colors.text1} transparent transparent
       transparent;
   }
   div:nth-child(1) {
