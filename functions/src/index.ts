@@ -10,13 +10,12 @@ const db = admin.firestore();
 const log = functions.logger.log;
 const errLog = functions.logger.error;
 
-export const randomQuote = functions.https.onRequest(async (req, res) => {
+export const randomQuote = functions.https.onRequest(async (_, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
   const snapshot = await db.collection("quotes").get();
   const randomQuote =
     snapshot.docs[Math.floor(Math.random() * snapshot.docs.length)];
-  functions.logger.log("quote:", randomQuote.data());
   res.json(randomQuote.data());
 });
 
