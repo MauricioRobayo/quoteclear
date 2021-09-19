@@ -63,7 +63,9 @@ export async function getQuoteText(cttId: string): Promise<string> {
     .trim();
 
   if (!/\w/.test(text)) {
-    throw new Error(`getQuoteTest: could not find text for ${cttId}`);
+    throw new Error(
+      `getQuoteTest: not a quote on cttId '${cttId}' with text '${text}'`
+    );
   }
 
   return text;
