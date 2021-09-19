@@ -1,4 +1,7 @@
-import { getQuoteText } from "../../functions/src/scraper";
+import {
+  getQuoteText,
+  removeEnclosingQuotationMarks,
+} from "../../functions/src/scraper";
 import { QuoteStorage } from "../../functions/src/types";
 import cttIds from "./previousCttIds.json";
 import fs from "fs/promises";
@@ -18,7 +21,7 @@ async function getPreviousQuotes() {
 
       quotes.push({
         ...cttId,
-        text: quote,
+        text: removeEnclosingQuotationMarks(quote),
       });
     } catch (err) {
       console.log(`Failed on ${cttId}`);
