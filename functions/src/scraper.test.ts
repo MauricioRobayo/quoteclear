@@ -1,4 +1,8 @@
-import { getPreviousThursday, formatDate } from "./scraper";
+import {
+  getPreviousThursday,
+  formatDate,
+  removeEnclosingQuotationMarks,
+} from "./scraper";
 
 describe("getPreviousThursday", () => {
   const thursday = new Date("2021-09-30");
@@ -20,4 +24,23 @@ describe("formatDate", () => {
   it("should return september-2-2021", () => {
     expect(formatDate(new Date("2021-09-02"))).toBe("september-2-2021");
   });
+});
+
+describe.only("removeEnclosingQuotes", () => {
+  const cases = [
+    ["hello, world!", "hello, world!"],
+    ['"hello, world!"', "hello, world!"],
+    ["“hello, world!”", "hello, world!"],
+    ["‘hello, world!’", "hello, world!"],
+    ["hello, “world!”", "hello, “world!”"],
+    ["“hello”, world!", "“hello”, world!"],
+    ['“hello, "world!"”', 'hello, "world!"'],
+    ['"hello, "world!""', 'hello, "world!"'],
+  ];
+  it.each(cases)(
+    "should remove enclosing quotation marks from %p",
+    (text, expected) => {
+      expect(removeEnclosingQuotationMarks(text)).toBe(expected);
+    }
+  );
 });

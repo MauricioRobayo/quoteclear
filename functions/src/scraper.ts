@@ -70,3 +70,16 @@ export async function getQuoteText(cttId: string): Promise<string> {
 
   return text;
 }
+
+export function removeEnclosingQuotationMarks(text: string): string {
+  if (text.startsWith('"') && text.endsWith('"')) {
+    return text.slice(1, -1);
+  }
+  if (text.startsWith("“") && text.endsWith("”")) {
+    return text.slice(1, -1);
+  }
+  if (text.startsWith("‘") && text.endsWith("’")) {
+    return text.slice(1, -1);
+  }
+  return text;
+}
