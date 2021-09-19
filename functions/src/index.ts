@@ -1,6 +1,10 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
-import { getCttIds, getQuoteText } from "./scraper";
+import {
+  getCttIds,
+  getQuoteText,
+  removeEnclosingQuotationMarks,
+} from "./scraper";
 import { QuoteStorage } from "./types";
 
 admin.initializeApp();
@@ -33,7 +37,7 @@ export const getLatestQuotes = functions.pubsub
 
           const quote = {
             cttId,
-            text,
+            text: removeEnclosingQuotationMarks(text),
             source,
           };
 
