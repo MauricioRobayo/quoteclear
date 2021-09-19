@@ -2,7 +2,7 @@
   "compilerOptions": {
     "importHelpers": true,
     "removeComments": true,
-    "target": "es5",
+    "target": "es2020",
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
