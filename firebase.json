@@ -44,7 +44,7 @@
         "destination": "https://www.jcquotes.com",
         "type": 301
       },
-      }     {
+      {
         "source": "/api/random",
         "destination": "https://www.jcquotes.com/api/quotes/random",
         "type": 301
